@@ -31,7 +31,7 @@ function displayError(error) {
 function displayCmds(cmds) {
   const outputDiv = document.getElementById('output')
   clear(outputDiv)
-  const rows = cmds.map(cmd => tr(td(formatHex(cmd.serialize())), td(cmd.toString())))
+  const rows = cmds.map(cmd => tr(td(formatHex(cmd.serialize()), 100), td(cmd.toString(), 600)))
   let table = document.createElement('table')
   for (const row of rows) {
     table.appendChild(row)
@@ -59,8 +59,9 @@ function tr(...args) {
   return el
 }
 
-function td(s: string) {
+function td(s: string, width: number) {
   const el = document.createElement('td')
+  el.style.maxWidth = `${width}px`
   el.innerHTML = s
   return el
 }
@@ -69,11 +70,6 @@ function formatHex(buf: any): string {
   const chunks: string[] = []
   for (let i = 0; i < buf.length; i++) {
     chunks.push(buf.subarray(i, i+1).toString('hex'))
-    if (chunks.length > 5) {
-      chunks.pop()
-      chunks.push('...')
-      break
-    }
   }
   return chunks.join(' ')
 }
