@@ -5,6 +5,7 @@ import { Emulator } from 'epson-tm-t88v-emulator'
 window.onload = () => {
   const inputTextarea: HTMLTextAreaElement = document.getElementById('input') as HTMLTextAreaElement
   const outputCanvas: HTMLCanvasElement = document.getElementById('emulatorDisplay') as HTMLCanvasElement
+
   inputTextarea.addEventListener('input', event => {
     const buf = parseHex(inputTextarea.value)
     const emulator: Emulator = new Emulator(outputCanvas)
@@ -20,6 +21,7 @@ window.onload = () => {
     }
   })
 
+  inputTextarea.focus()
 }
 
 function displayError(error) {
