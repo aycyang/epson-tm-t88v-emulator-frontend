@@ -1,10 +1,14 @@
 import { Buffer } from 'buffer'
 import * as escpos from 'escpos-ts'
+import { Emulator } from 'epson-tm-t88v-emulator'
 
 window.onload = () => {
   const inputTextarea: HTMLTextAreaElement = document.getElementById('input') as HTMLTextAreaElement
+  const outputCanvas: HTMLCanvasElement = document.getElementById('emulatorDisplay') as HTMLCanvasElement
   inputTextarea.addEventListener('input', event => {
     const buf = parseHex(inputTextarea.value)
+    const emulator: Emulator = new Emulator(outputCanvas)
+    emulator.read(buf)
     let cmds = []
     try {
       cmds = escpos.parse(buf)
@@ -15,6 +19,7 @@ window.onload = () => {
       displayError(e)
     }
   })
+
 }
 
 function displayError(error) {

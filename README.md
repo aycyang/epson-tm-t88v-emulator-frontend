@@ -1,4 +1,4 @@
-# escpos-ts-playground
+# Epson TM-T88V Emulator Frontend
 
 ### TODO
 

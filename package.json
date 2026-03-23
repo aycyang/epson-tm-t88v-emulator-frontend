@@ -1,5 +1,5 @@
 {
-  "name": "escpos-ts-playground",
+  "name": "epson-tm-t88v-emulator-frontend",
   "version": "0.0.1",
   "description": "",
   "main": "src/main.ts",
@@ -16,6 +16,7 @@
   "dependencies": {
     "buffer": "^6.0.3",
     "escpos-ts": "file:../escpos-ts",
+    "epson-tm-t88v-emulator": "file:../epson-tm-t88v-emulator",
     "http-server": "^14.1.1"
   }
 }
