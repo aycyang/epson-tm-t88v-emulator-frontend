@@ -6,9 +6,10 @@ window.onload = () => {
   const inputTextarea: HTMLTextAreaElement = document.getElementById('input') as HTMLTextAreaElement
   const outputCanvas: HTMLCanvasElement = document.getElementById('emulatorDisplay') as HTMLCanvasElement
 
-  inputTextarea.addEventListener('input', event => {
+  inputTextarea.addEventListener('input', async (event) => {
     const buf = parseHex(inputTextarea.value)
     const emulator: Emulator = new Emulator(outputCanvas)
+    await emulator.init()
     emulator.read(buf)
     let cmds = []
     try {
