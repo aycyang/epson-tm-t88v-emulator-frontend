@@ -34,12 +34,22 @@ function displayError(error) {
 function displayCmds(cmds) {
   const outputDiv = document.getElementById('output')
   clear(outputDiv)
-  const rows = cmds.map(cmd => tr(td(formatHex(cmd.serialize()), 100), td(cmd.toString(), 600)))
+  const rows = cmds.map(cmd => tr(td(formatHex(cmd.serialize()), 100), td(htmlEscape(cmd.toString()), 600)))
   let table = document.createElement('table')
   for (const row of rows) {
     table.appendChild(row)
   }
   outputDiv.appendChild(table)
+}
+
+// source: https://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-in-html
+function htmlEscape(text) {
+  return String(text)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
 }
 
 function parseHex(hex: string): Buffer {
