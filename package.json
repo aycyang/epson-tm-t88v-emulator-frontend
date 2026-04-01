@@ -15,8 +15,8 @@
   },
   "dependencies": {
     "buffer": "^6.0.3",
-    "escpos-ts": "file:../escpos-ts",
-    "epson-tm-t88v-emulator": "file:../epson-tm-t88v-emulator",
+    "epson-tm-t88v-emulator": "^0.0.1",
+    "escpos-ts": "^0.0.3",
     "http-server": "^14.1.1"
   }
 }
